@@ -235,7 +235,7 @@ document.querySelectorAll('.box').forEach(piece=>{
 
             //Queen
 
-            if(piece.innerText==`${turn}quenn`){
+            if(piece.innerText==`${turn}queen`){
                 piece.style.backgroundColor='pink';
 
                 for (let i = 1; i < 9; i++) {
@@ -340,6 +340,49 @@ document.querySelectorAll('.box').forEach(piece=>{
                 }
             }
 
+        }
+    })
+});
+
+document.querySelectorAll('.box').forEach(piece=>{
+    piece.addEventListener('click',()=>{
+        if(piece.style.backgroundColor=='pink'){
+            pieceSquare=piece.id;
+            pieceName=piece.innerText;
+
+            document.querySelectorAll('.box').forEach(square=>{
+                square.addEventListener('click',()=>{
+                
+                    squareID=square.id;
+                    arr=Array.from(squareID);
+                    arr.shift();
+                    file=eval(arr.pop());
+                    arr.push('0');
+                    rank=eval(arr.join(''))
+                    a=rank+file;
+
+                    if(square.style.backgroundColor=='green' && square.innerText.length==0){
+                        if(pieceName=='Wpawn' && rank==800){
+                            document.getElementById(`b${a}`).innerText='Wqueen';
+                            document.getElementById(pieceSquare).innerText='';
+                            coloring();
+                            insertImage();
+                        }
+                        else if(pieceName=='Bpawn' && rank==100){
+                            document.getElementById(`b${a}`).innerText='Bqueen';
+                            document.getElementById(pieceSquare).innerText='';
+                            coloring();
+                            insertImage();
+                        }
+                        else{
+                            document.getElementById(pieceSquare).innerText='';                           
+                            square.innerText=pieceName;                            
+                            coloring();
+                            insertImage();
+                        }
+                    }
+                })
+            })
         }
     })
 })
