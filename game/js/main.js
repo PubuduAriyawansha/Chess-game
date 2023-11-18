@@ -123,28 +123,28 @@ document.querySelectorAll('.box').forEach(piece=>{
                 piece.style.backgroundColor = 'pink';
 
                 if(file<8){
-                    document.getElementById(`b${a+1}`).style.backgroundColor='green;'
+                    document.getElementById(`b${a+1}`).style.backgroundColor='green';
                 }
                 if(file>1){
-                    document.getElementById(`b${a-1}`).style.backgroundColor='green;'
+                    document.getElementById(`b${a-1}`).style.backgroundColor='green';
                 }
                 if(rank<800){
-                    document.getElementById(`b${a+100}`).style.backgroundColor='green;'
+                    document.getElementById(`b${a+100}`).style.backgroundColor='green';
                 }
                 if(rank>100){
-                    document.getElementById(`b${a-100}`).style.backgroundColor='green;'
+                    document.getElementById(`b${a-100}`).style.backgroundColor='green';
                 }
                 if(rank<800 && file>1){
-                    document.getElementById(`b${a+100-1}`).style.backgroundColor='green;'
+                    document.getElementById(`b${a+100-1}`).style.backgroundColor='green';
                 }
                 if(rank<800 && file<8){
-                    document.getElementById(`b${a+100+1}`).style.backgroundColor='green;'
+                    document.getElementById(`b${a+100+1}`).style.backgroundColor='green';
                 }
                 if(rank>100 && file>1){
-                    document.getElementById(`b${a-100-1}`).style.backgroundColor='green;'
+                    document.getElementById(`b${a-100-1}`).style.backgroundColor='green';
                 }
                 if(rank>100 && file<8){
-                    document.getElementById(`b${a-100+1}`).style.backgroundColor='green;'
+                    document.getElementById(`b${a-100+1}`).style.backgroundColor='green';
                 }
             }
 
@@ -190,6 +190,154 @@ document.querySelectorAll('.box').forEach(piece=>{
                     }
                 }
 
+            }
+
+            //Bishop
+
+            if(piece.innerText==`${turn}bishop`){
+                piece.style.backgroundColor = 'pink';
+
+                for (let i = 1; i < 9; i++) {
+                    if (i < (900 - rank) / 100 && i < 9 - file && document.getElementById(`b${a + i * 100 + i}`).innerText.length == 0) {
+                        document.getElementById(`b${a + i * 100 + i}`).style.backgroundColor = 'green'
+                    }else if (i < (900 - rank) / 100 && i < 9 - file && document.getElementById(`b${a + i * 100 + i}`).innerText.length !== 0) {
+                        document.getElementById(`b${a + i * 100 + i}`).style.backgroundColor = 'green'
+                        break
+                    }
+                }
+                for (let i = 1; i < 9; i++) {
+                    if (i < (900 - rank) / 100 && 0 < file - i && document.getElementById(`b${a + i * 100 - i}`).innerText.length == 0) {
+                        document.getElementById(`b${a + i * 100 - i}`).style.backgroundColor = 'green'
+                    }else if (i < (900 - rank) / 100 && 0 < file - i&& document.getElementById(`b${a + i * 100 - i}`).innerText.length !== 0) {
+                        document.getElementById(`b${a + i * 100 - i}`).style.backgroundColor = 'green'
+                        break
+                    }
+                }
+
+                for (let i = 1; i < 9; i++) {
+                    if (i < rank / 100 && i < 9 - file && document.getElementById(`b${a - i * 100 + i}`).innerText.length == 0) {
+                        document.getElementById(`b${a - i * 100 + i}`).style.backgroundColor = 'green'
+                    }else if (i < rank / 100 && i < 9 - file && document.getElementById(`b${a - i * 100 + i}`).innerText.length !== 0) {
+                        document.getElementById(`b${a - i * 100 + i}`).style.backgroundColor = 'green'
+                        break
+                    }
+                }
+                for (let i = 1; i < 9; i++) {
+                    if (i < rank/ 100 && 0 < file - i && document.getElementById(`b${a - i * 100 - i}`).innerText.length == 0) {
+                        document.getElementById(`b${a - i * 100 - i}`).style.backgroundColor = 'green'
+                    }else if (i<rank / 100 && 0 < file - i&& document.getElementById(`b${a - i * 100 - i}`).innerText.length !== 0) {
+                        document.getElementById(`b${a - i * 100 - i}`).style.backgroundColor = 'green'
+                        break
+                    }
+                }
+
+            }
+
+            //Queen
+
+            if(piece.innerText==`${turn}quenn`){
+                piece.style.backgroundColor='pink';
+
+                for (let i = 1; i < 9; i++) {
+                    if (i < (900 - rank) / 100 && i < 9 - file && document.getElementById(`b${a + i * 100 + i}`).innerText.length == 0) {
+                        document.getElementById(`b${a + i * 100 + i}`).style.backgroundColor = 'green'
+                    }else if (i < (900 - rank) / 100 && i < 9 - file && document.getElementById(`b${a + i * 100 + i}`).innerText.length !== 0) {
+                        document.getElementById(`b${a + i * 100 + i}`).style.backgroundColor = 'green'
+                        break
+                    }
+                }
+                for (let i = 1; i < 9; i++) {
+                    if (i < (900 - rank) / 100 && 0 < file - i && document.getElementById(`b${a + i * 100 - i}`).innerText.length == 0) {
+                        document.getElementById(`b${a + i * 100 - i}`).style.backgroundColor = 'green'
+                    }else if (i < (900 - rank) / 100 && 0 < file - i&& document.getElementById(`b${a + i * 100 - i}`).innerText.length !== 0) {
+                        document.getElementById(`b${a + i * 100 - i}`).style.backgroundColor = 'green'
+                        break
+                    }
+                }
+
+                for (let i = 1; i < 9; i++) {
+                    if (i < rank / 100 && i < 9 - file && document.getElementById(`b${a - i * 100 + i}`).innerText.length == 0) {
+                        document.getElementById(`b${a - i * 100 + i}`).style.backgroundColor = 'green'
+                    }else if (i < rank / 100 && i < 9 - file && document.getElementById(`b${a - i * 100 + i}`).innerText.length !== 0) {
+                        document.getElementById(`b${a - i * 100 + i}`).style.backgroundColor = 'green'
+                        break
+                    }
+                }
+                for (let i = 1; i < 9; i++) {
+                    if (i < rank/ 100 && 0 < file - i && document.getElementById(`b${a - i * 100 - i}`).innerText.length == 0) {
+                        document.getElementById(`b${a - i * 100 - i}`).style.backgroundColor = 'green'
+                    }else if (i<rank / 100 && 0 < file - i&& document.getElementById(`b${a - i * 100 - i}`).innerText.length !== 0) {
+                        document.getElementById(`b${a - i * 100 - i}`).style.backgroundColor = 'green'
+                        break
+                    }
+                }
+                for (let i = 1; i < 9; i++) {
+
+                    if ((a + i * 100) < 900 && document.getElementById(`b${a + i * 100}`).innerText == 0) {
+                        document.getElementById(`b${a + i * 100}`).style.backgroundColor = 'green'
+                    }else if ((a + i * 100) < 900 && document.getElementById(`b${a + i * 100}`).innerText !== 0) {
+                        document.getElementById(`b${a + i * 100}`).style.backgroundColor = 'green'
+                        break
+                    }   
+                }
+                for (let i = 1; i < 9; i++) {
+
+                    if ((a - i * 100) >100 && document.getElementById(`b${a - i * 100}`).innerText == 0) {
+                        document.getElementById(`b${a - i * 100}`).style.backgroundColor = 'green'
+                    }else if ((a - i * 100) > 100 && document.getElementById(`b${a - i * 100}`).innerText !== 0) {
+                        document.getElementById(`b${a - i * 100}`).style.backgroundColor = 'green'
+                        break
+                    }
+                }
+                for (let i = 1; i < 9; i++) {
+
+                    if ((a + i ) < (rank+9) && document.getElementById(`b${a + i }`).innerText == 0) {
+                        document.getElementById(`b${a + i}`).style.backgroundColor = 'green'
+                    }else if ((a + i ) < (rank+9) && document.getElementById(`b${a + i}`).innerText !== 0) {
+                        document.getElementById(`b${a + i}`).style.backgroundColor = 'green'
+                        break
+                    }
+                }
+                for (let i = 1; i < 9; i++) {
+
+                    if ((a - i ) > (rank) && document.getElementById(`b${a - i }`).innerText == 0) {
+                        document.getElementById(`b${a - i}`).style.backgroundColor = 'green'
+                    }else if ((a - i ) > (rank) && document.getElementById(`b${a - i}`).innerText !== 0) {
+                        document.getElementById(`b${a - i}`).style.backgroundColor = 'green'
+                        break
+                    }
+                }
+            }
+
+            //Knight
+
+            if(piece.innerText==`${turn}knight`){
+                piece.style.backgroundColor='pink';
+
+                if (file < 7 && rank < 800) {
+                    document.getElementById(`b${a + 100 + 2}`).style.backgroundColor = 'green'
+                }
+                if (file > 2 && rank < 800) {
+                    document.getElementById(`b${a + 100 - 2}`).style.backgroundColor = 'green'
+                }
+                if (file < 7 && rank > 100) {
+                    document.getElementById(`b${a - 100 + 2}`).style.backgroundColor = 'green'
+                }
+                if (file > 2 && rank > 100) {
+                    document.getElementById(`b${a - 100 - 2}`).style.backgroundColor = 'green'
+                }
+                if (file < 8 && rank < 700) {
+                    document.getElementById(`b${a + 200 + 1}`).style.backgroundColor = 'green'
+                }
+                if (file > 1 && rank < 700) {
+                    document.getElementById(`b${a + 200 - 1}`).style.backgroundColor = 'green'
+                }
+                if (file < 8 && rank > 200) {
+                    document.getElementById(`b${a - 200 + 1}`).style.backgroundColor = 'green'
+                }
+                if (file > 1 && rank > 200) {
+                    document.getElementById(`b${a - 200 - 1}`).style.backgroundColor = 'green'
+                }
             }
 
         }
