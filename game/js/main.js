@@ -53,8 +53,7 @@ function avoidCapture(){
                     otherPieceName=square.innerText;
 
                     MyPieceColor=((Array.from(MypieceName)).shift()).toString();
-                    OtherPieceColor= ((Array.from(otherPieceName)).shift()).toString();
-                    console.log(otherPieceName);
+                    OtherPieceColor= ((Array.from(otherPieceName)).shift()).toString();                   
                     if(MyPieceColor===OtherPieceColor){
                         square.style.backgroundColor='red';
                     }
@@ -67,6 +66,8 @@ function avoidCapture(){
 
 //Pieces moving patterns
 move=1;
+whiteCastleChance=true;
+blackCastleChance=true;
 document.querySelectorAll('.box').forEach(piece=>{
     piece.addEventListener('click',function(){
 
@@ -169,6 +170,20 @@ document.querySelectorAll('.box').forEach(piece=>{
                 }
                 if(rank>100 && file<8){
                     document.getElementById(`b${a-100+1}`).style.backgroundColor='green';
+                }
+
+
+                if(whiteCastleChance==true && a==105 && document.getElementById('b106').innerText== '' && document.getElementById('b107').innerText== '' && document.getElementById('b108').innerText== 'Wrook'){
+                    document.getElementById(`b107`).style.backgroundColor = 'purple';
+                }
+                if(whiteCastleChance==true && a==105 && document.getElementById('b104').innerText== '' && document.getElementById('b103').innerText== '' && document.getElementById('b102').innerText== '' && document.getElementById('b101').innerText== 'Wrook'){
+                    document.getElementById(`b103`).style.backgroundColor = 'purple';
+                }
+                if(blackCastleChance==true && a==805 && document.getElementById('b806').innerText== '' && document.getElementById('b807').innerText== '' && document.getElementById('b808').innerText== 'Brook'){
+                    document.getElementById(`b807`).style.backgroundColor = 'purple';
+                }
+                if(blackCastleChance==true && a==805 && document.getElementById('b804').innerText== '' && document.getElementById('b803').innerText== '' && document.getElementById('b802').innerText== '' && document.getElementById('b801').innerText== 'Brook'){
+                    document.getElementById(`b803`).style.backgroundColor = 'purple';
                 }
             }
 
@@ -390,27 +405,60 @@ document.querySelectorAll('.box').forEach(piece=>{
                     rank=eval(arr.join(''))
                     a=rank+file;
 
+                    console.log(square.style.backgroundColor);
+
+                    if((square.style.backgroundColor=='rgb(200, 201, 200)'||square.style.backgroundColor=='rgb(110, 75, 43)') && square.innerText.length==0){
+                        console.log('object');
+                        if(square.id=='b103'){
+                            document.getElementById('b101').innerText='';
+                            document.getElementById('b103').innerText='Wking';
+                            document.getElementById('b104').innerText='Wrook';
+                            document.getElementById('b105').innerText='';
+                        }
+                        else if(square.id=='b107'){
+                            document.getElementById('b108').innerText='';
+                            document.getElementById('b107').innerText='Wking';
+                            document.getElementById('b106').innerText='Wrook';
+                            document.getElementById('b105').innerText='';
+                        }
+                        else if(square.id=='b803'){
+                            document.getElementById('b801').innerText='';
+                            document.getElementById('b803').innerText='Bking';
+                            document.getElementById('b804').innerText='Brook';
+                            document.getElementById('b805').innerText='';
+                        }
+                        else if(square.id=='b807'){
+                            document.getElementById('b808').innerText='';
+                            document.getElementById('b807').innerText='Bking';
+                            document.getElementById('b806').innerText='Brook';
+                            document.getElementById('b805').innerText='';
+                        }
+                        coloring();
+                        insertImage();
+                        move+=1;
+                    }
+
                     if(square.style.backgroundColor=='green' ){
                         if(pieceName=='Wpawn' && rank==800){
                             document.getElementById(`b${a}`).innerText='Wqueen';
                             document.getElementById(pieceSquare).innerText='';
-                            coloring();
-                            insertImage();
+                            
                         }
                         else if(pieceName=='Bpawn' && rank==100){
                             document.getElementById(`b${a}`).innerText='Bqueen';
                             document.getElementById(pieceSquare).innerText='';
-                            coloring();
-                            insertImage();
+                            
                         }
                         else{
                             document.getElementById(pieceSquare).innerText='';                           
                             square.innerText=pieceName;                            
-                            coloring();
-                            insertImage();
+                            
                         }
+                        coloring();
+                        insertImage();
                         move+=1;
                     }
+                    
                     
                 })
             })
