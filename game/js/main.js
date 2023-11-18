@@ -20,6 +20,7 @@ function insertImage() {
 }
 insertImage();
 
+//board coloring
 function coloring() {
     const color = document.querySelectorAll('.box')
 
@@ -42,6 +43,29 @@ function coloring() {
 }
 coloring();
 
+//avoid capturing same plaeyr pieces
+function avoidCapture(){
+    document.querySelectorAll('.box').forEach(piece =>{
+        if(piece.style.backgroundColor=='pink'){
+            document.querySelectorAll('.box').forEach(square=>{
+                if(square.style.backgroundColor=='green'&& square.innerText.length!=0){
+                    MypieceName=piece.innerText;
+                    otherPieceName=square.innerText;
+
+                    MyPieceColor=((Array.from(MypieceName)).shift()).toString();
+                    OtherPieceColor= ((Array.from(otherPieceName)).shift()).toString();
+                    console.log(otherPieceName);
+                    if(MyPieceColor===OtherPieceColor){
+                        square.style.backgroundColor='red';
+                    }
+                }
+            })
+        }
+    })
+}
+
+
+//Pieces moving patterns
 move=1;
 document.querySelectorAll('.box').forEach(piece=>{
     piece.addEventListener('click',function(){
@@ -339,11 +363,16 @@ document.querySelectorAll('.box').forEach(piece=>{
                     document.getElementById(`b${a - 200 - 1}`).style.backgroundColor = 'green'
                 }
             }
+            
 
         }
+        avoidCapture();
+        
     })
 });
 
+
+//Pieces movement
 document.querySelectorAll('.box').forEach(piece=>{
     piece.addEventListener('click',()=>{
         if(piece.style.backgroundColor=='pink'){
@@ -387,4 +416,20 @@ document.querySelectorAll('.box').forEach(piece=>{
             })
         }
     })
-})
+});
+
+//avoid selecting move pieces
+count =0;
+document.querySelectorAll('.box').forEach(e=>{
+    e.addEventListener('click',()=>{
+        count+=1;
+        if(count%2==0 && e.style.backgroundColor!='green'){
+            coloring();
+        }
+    })
+});
+
+
+
+
+
