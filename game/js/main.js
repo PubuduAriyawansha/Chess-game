@@ -97,7 +97,7 @@ document.querySelectorAll('.box').forEach(piece=>{
                 if(move%2==0 && rank>100){
                     if(rank==700 && document.getElementById(`b${a-100}`).innerText.length==0){
                         document.getElementById(`b${a-100}`).style.backgroundColor='green';
-                        if(rank==200 && document.getElementById(`b${a-200}`).innerText.length==0){
+                        if(rank==700 && document.getElementById(`b${a-200}`).innerText.length==0){
                             document.getElementById(`b${a-200}`).style.backgroundColor='green';
                         }
                     }
@@ -361,7 +361,7 @@ document.querySelectorAll('.box').forEach(piece=>{
                     rank=eval(arr.join(''))
                     a=rank+file;
 
-                    if(square.style.backgroundColor=='green' && square.innerText.length==0){
+                    if(square.style.backgroundColor=='green' ){
                         if(pieceName=='Wpawn' && rank==800){
                             document.getElementById(`b${a}`).innerText='Wqueen';
                             document.getElementById(pieceSquare).innerText='';
@@ -380,7 +380,9 @@ document.querySelectorAll('.box').forEach(piece=>{
                             coloring();
                             insertImage();
                         }
+                        move+=1;
                     }
+                    
                 })
             })
         }
