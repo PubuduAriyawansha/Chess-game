@@ -474,6 +474,7 @@ document.querySelectorAll('.box').forEach(piece=>{
                     }
                     
                     labelText();
+                    
                 })
             })
         }
